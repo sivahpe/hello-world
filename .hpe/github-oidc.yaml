@@ -1,0 +1,10 @@
+version: v1alpha3
+capabilityOptions:
+  - name: ecr-cds-artifacts-dev
+    type: ecr-v3
+    repositories:
+      - /
+  - name: ecr-cds-artifacts-prod
+    type: ecr-v3
+    repositories:
+      - /
