@@ -21,7 +21,6 @@ on:
           - scdev01-us-west-2
           - scdev02-us-west-2
           - scdev03-us-west-2
-          - sfmpoc-us-west-2
       service:
         description: 'Deployment Service'
         required: true
