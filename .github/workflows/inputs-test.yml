@@ -1,0 +1,45 @@
+on:
+  workflow_dispatch:
+    inputs:
+      cluster:
+        description: 'Cluster to deploy to'
+        required: true
+        options:
+          - atlaspoc-us-west-2
+          - filepoc-us-west-2
+          - fleetpoc-us-west-2
+          - fleetpoc2-us-west-2
+          - fleetpoc3-us-west-2
+          - fleetscale-us-west-2
+          - hcipoc-us-west-2
+          - heliumops-us-west-2
+          - neonops3-us-west-2
+          - rop-poc01-us-west-2
+          - scdev01-us-west-2
+          - scdev02-us-west-2
+          - scdev03-us-west-2
+          - sfmpoc-us-west-2
+      service:
+        description: 'Deployment Service'
+        required: true
+        options:
+          - cloud-objectstore-manager
+          - cloud-objectstore-manager-debug-rest
+          - cloud-objectstore-manager-functional-tests
+      chart_version:
+        description: 'Chart to deploy'
+        required: true
+      values_filename:
+        description: 'Custom values chart'
+        default: 'values.yaml'
+
+  jobs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Output values
+      run: |
+        echo Cluster: ${github.event.inputs.cluster}
+        echo Service: ${github.event.inputs.service}
+        echo Chart: ${github.event.inputs.chart_version}
+        echo Values File: ${github.event.inputs.values_filename}
