@@ -33,7 +33,8 @@ on:
         description: 'Custom values chart'
         default: 'values.yaml'
 
-  jobs:
+jobs:
+  output_values:
     runs-on: ubuntu-latest
 
     steps:
