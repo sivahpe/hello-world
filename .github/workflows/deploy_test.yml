@@ -43,7 +43,7 @@ jobs:
     steps:
     - name: Output values
       run: |
-        echo Cluster: ${github.event.inputs.cluster}
-        echo Service: ${github.event.inputs.service}
-        echo Chart: ${github.event.inputs.chart_version}
-        echo Values File: ${github.event.inputs.values_filename}
+        echo Cluster: ${inputs.cluster}
+        echo Service: ${inputs.service}
+        echo Chart: ${inputs.chart_version}
+        echo Values File: ${inputs.values_filename}
