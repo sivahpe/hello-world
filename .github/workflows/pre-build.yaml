@@ -1,0 +1,53 @@
+# Copyright 2022 Hewlett Packard Enterprise Development LP
+
+name: Pipeline Test Run
+run-name: ${{ github.ref_name }} pipeline Run
+on: [push]
+jobs:
+  pre_build_tests:
+    runs-on: ubuntu-latest
+    container: 
+      image: ghcr.io/hpe-cds/sc-containers-images/cds-go-dev:0.0.68-0-ga3d26f8
+      options: --user root
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Run lint
+        run: make lint
+      - name: Run kubescore
+        run: make kubescore
+#      - name: Generate tag
+#        run: |
+#          git config user.name cds-github-ci
+#          git config user.email cds-github-ci@hpe.com
+#          tag-manage create --min 0.1.0 --push -vv
+#          echo "::set-output name=TAG_VERSION::$(tag-manage describe --default 0.0.0)"
+
+  trivy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Run Trivy fs scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'
+      
+
+#  sonarqube:
+#    name: SonarQube Trigger
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: Checking out
+#      uses: actions/checkout@master
+#      with:
+#        fetch-depth: 0
+#    - name: SonarQube Scan
+#      uses: kitabisa/sonarqube-action@v1.2.0
+#      with:
+#        host: ${{ secrets.SONARQUBE_HOSTS }}
+#        login: ${{ secrets.SONARQUBE_TOKEN }}
+#        projectBaseDir: .
+#        projectKey: ${{ env.REPO_NAME }}
