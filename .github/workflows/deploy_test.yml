@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       cluster:
+        type: choice
         description: 'Cluster to deploy to'
         required: true
         options:
@@ -22,6 +23,7 @@ on:
           - scdev02-us-west-2
           - scdev03-us-west-2
       service:
+        type: choice
         description: 'Deployment Service'
         required: true
         options:
