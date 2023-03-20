@@ -41,6 +41,8 @@ jobs:
       image: ghcr.io/hpe-cds/sc-containers-images/cds-go-dev:0.0.68-0-ga3d26f8
       options: --user root
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
     - name: Helm build
       run: "helm package helm/hello-world --version 0.1 --app-version 0.1"
     - name: Push to helm
