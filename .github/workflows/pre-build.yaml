@@ -1,7 +1,6 @@
 # Copyright 2022 Hewlett Packard Enterprise Development LP
 
 name: Pipeline Test Run
-run-name: ${{ github.ref_name }} pipeline Run
 on: [push]
 jobs:
   pre_build_tests:
@@ -42,8 +41,18 @@ jobs:
       options: --user root
     permissions:
       id-token: write # This is required for requesting the JWT
+      actions: read
+      checks: read
+      contents: read
+      deployments: read
+      issues: read
+      discussions: read
       packages: read
+      pages: read
+      pull-requests: read
       repository-projects: read
+      security-events: read
+      statuses: read
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
