@@ -42,6 +42,7 @@ jobs:
     permissions:
       id-token: write # This is required for requesting the JWT
       actions: read
+      contents: read
       packages: read
       repository-projects: read
     steps:
