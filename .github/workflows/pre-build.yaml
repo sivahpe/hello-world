@@ -43,6 +43,7 @@ jobs:
     permissions:
       id-token: write # This is required for requesting the JWT
       packages: read
+      repository-projects: read
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
