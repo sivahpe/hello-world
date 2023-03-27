@@ -40,6 +40,8 @@ jobs:
     container: 
       image: ghcr.io/hpe-cds/sc-containers-images/cds-go-dev:0.0.68-0-ga3d26f8
       options: --user root
+    permissions:
+      id-token: write # This is required for requesting the JWT
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
