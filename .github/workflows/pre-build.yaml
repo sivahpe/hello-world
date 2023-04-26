@@ -50,7 +50,9 @@ jobs:
     - name: Helm build
       run: "helm package helm/hello-world --version 0.1 --app-version 0.1"
     - name: check helm location
-      run: ls
+      run: | 
+        ls
+        pwd
     - name: Push to helm
       uses: hpe-cds/helm-push@dev
       with:
