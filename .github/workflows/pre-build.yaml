@@ -48,10 +48,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Helm build
-      run: "helm package helm/hello-world --version 0.1 --app-version 0.1"
+      run: "helm package helm/hello-world --version 0.2 --app-version 0.2"
     - name: Push to helm
       uses: hpe-cds/helm-push@dev
       with:
-        skip_checkout: false
-        helm_package: /__w/hello-world/hello-world/hello-world-0.1.tgz
+        helm_package: hello-world-0.2.tgz
 
