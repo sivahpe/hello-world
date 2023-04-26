@@ -56,6 +56,6 @@ jobs:
     - name: Push to helm
       uses: hpe-cds/helm-push@dev
       with:
-        skip_checkout: false
+        skip_checkout: true
         helm_package: /__w/hello-world/hello-world/hello-world-0.1.tgz
 
