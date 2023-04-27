@@ -36,21 +36,11 @@ jobs:
 
   helm-push:
     runs-on: ubuntu-latest
-    container: 
-      image: ghcr.io/hpe-cds/sc-containers-images/cds-go-dev:0.0.68-0-ga3d26f8
-      options: --user root
-    permissions:
-      id-token: write # This is required for requesting the JWT
-      actions: read
-      contents: read
-      packages: read
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Helm build
-      run: "helm package helm/hello-world --version 0.2 --app-version 0.2"
     - name: Push to helm
-      uses: hpe-cds/helm-push@dev
+      uses: hpe-cds/helm-push/.github/workflows/helm-process.yml@dev
       with:
-        helm_package: hello-world-0.2.tgz
-
+        helm_package: helm/hello-world
+        version: 0.2
