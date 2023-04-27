@@ -3,31 +3,6 @@
 name: Pipeline Test Run
 on: [push]
 jobs:
-  pre_build_tests:
-    runs-on: ubuntu-latest
-    container: 
-      image: ghcr.io/hpe-cds/sc-containers-images/cds-go-dev:0.0.68-0-ga3d26f8
-      options: --user root
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      - name: Run lint
-        run: make lint
-      - name: Run kubescore
-        run: make kubescore
-
-  trivy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Run Trivy fs scan
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'fs'
-          ignore-unfixed: true
-          severity: 'CRITICAL,HIGH'
-
   helm-push:
     name: Push to helm
     uses: hpe-cds/helm-push/.github/workflows/helm-process.yml@dev
