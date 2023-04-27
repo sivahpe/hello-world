@@ -15,12 +15,6 @@ jobs:
         run: make lint
       - name: Run kubescore
         run: make kubescore
-#      - name: Generate tag
-#        run: |
-#          git config user.name cds-github-ci
-#          git config user.email cds-github-ci@hpe.com
-#          tag-manage create --min 0.1.0 --push -vv
-#          echo "::set-output name=TAG_VERSION::$(tag-manage describe --default 0.0.0)"
 
   trivy:
     runs-on: ubuntu-latest
