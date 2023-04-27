@@ -37,8 +37,6 @@ jobs:
   helm-push:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
     - name: Push to helm
       uses: hpe-cds/helm-push/.github/workflows/helm-process.yml@dev
       with:
