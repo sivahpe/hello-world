@@ -8,4 +8,4 @@ jobs:
     uses: hpe-cds/helm-push/.github/workflows/helm-process.yml@dev
     with:
       helm_package: helm/hello-world
-      version: 0.11
+      version: 0.1
