@@ -22,6 +22,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
-    # inputs are documented in the path below at the reusable workflow repo
-    uses: hpe-cds/reusable-workflows/.github/workflows/ci-go.yml@main
+    spinnaker_address:
+      runs-on: ubuntu-latest
+      environment: dev
+      steps:
+        - name: echo spinnaker url
+          shell: bash
+          run: |
+            echo "spinnaker url is ${{ vars.SPINNAKER_URL }}"
